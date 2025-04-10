@@ -106,6 +106,7 @@ func verify_and_build():
 		new_tower.position = build_location
 		new_tower.built = true
 		new_tower.type = build_type ## the '.type' variable is defined in the Turrets.gd script
+		new_tower.category = GameData.tower_data[build_type]["category"] #add var category to Turrets.gd
 		map_node.get_node("Turrets").add_child(new_tower, true)
 		map_node.get_node("TowerExclusion").set_cell(build_tile, 2, Vector2i(1,0))
 		

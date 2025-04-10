@@ -3,6 +3,7 @@ extends Node2D
 var enemy_array = []
 var built = false
 var enemy
+var category
 var type ##this will get a value of 'build_type' in the GameScene.gd 'build_and_verify' function
 var readyfreddy = true
 
@@ -60,6 +61,10 @@ func select_enemy():
 	
 func fire():
 	readyfreddy = false
+	if category == "Projectile":
+		fire_gun()
+	elif category == "Missile":
+		fire_missile()
 	#debugprint
 	#print(type)
 	enemy.on_hit(GameData.tower_data[type]["damage"])
@@ -74,7 +79,12 @@ func fire():
 #Now you simply use:
 #await get_tree().create_timer(1.0).timeout
 #var value = await some_function()
+func fire_gun():
+	get_node("AnimationPlayer").play("Fire")
 	
+func fire_missile():
+	pass
+		
 	
 	
 func _on_range_body_entered(body: Node2D) -> void:
