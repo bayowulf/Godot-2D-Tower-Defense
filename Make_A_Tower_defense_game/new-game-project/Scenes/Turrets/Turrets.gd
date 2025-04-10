@@ -24,7 +24,9 @@ func _physics_process(_delta: float) -> void:
 		#print(type)
 		
 		select_enemy()
-		turn()
+		if not get_node("AnimationPlayer").is_playing():
+			turn()
+			
 		if readyfreddy:
 			fire()
 	else:

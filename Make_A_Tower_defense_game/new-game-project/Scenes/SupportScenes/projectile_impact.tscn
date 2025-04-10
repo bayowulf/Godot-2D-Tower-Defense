@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyruv7ropm3wu"]
+
+[ext_resource type="Texture2D" uid="uid://qhrpnwklq7gh" path="res://Assets/Effects/explosion1.png" id="1_e4ldd"]
+[ext_resource type="Texture2D" uid="uid://bfctox33243rq" path="res://Assets/Effects/explosion2.png" id="2_mdasi"]
+[ext_resource type="Texture2D" uid="uid://svqo7ephyc7l" path="res://Assets/Effects/explosion3.png" id="3_qn458"]
+[ext_resource type="Texture2D" uid="uid://c7ylft5pi5qhp" path="res://Assets/Effects/explosion4.png" id="4_yh8gn"]
+[ext_resource type="Texture2D" uid="uid://bryiajk36al2c" path="res://Assets/Effects/explosion5.png" id="5_fmioj"]
+[ext_resource type="Script" uid="uid://be7vcidhe3o4a" path="res://Scenes/SupportScenes/projectile_impact.gd" id="6_mdasi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8117b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e4ldd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mdasi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qn458")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yh8gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fmioj")
+}],
+"loop": false,
+"name": &"Impact",
+"speed": 5.0
+}]
+
+[node name="ProjectileImpact" type="AnimatedSprite2D"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_8117b")
+animation = &"Impact"
+speed_scale = 4.0
+script = ExtResource("6_mdasi")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
